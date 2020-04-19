@@ -1,4 +1,4 @@
-# COVID-19 Flask API
+# COVID-19 Python Flask API
 Real-time coronavirus API based on COVID-19 data from Wikipedia.
 The API is writen in Python with Flask framework. This is simplified
 version of the API used by [Routitude COVID-19 Monitoring Service](https://www.routitude.com/).
