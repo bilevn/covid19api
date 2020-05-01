@@ -31,7 +31,7 @@ def get_report_countries():
     :return: Pandas DataFrame
     """
     url = 'https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory'
-    df = utils.get_wiki_table_df(url, 'Countries and territories')
+    df = utils.get_wiki_table_df(url, 'Locations[b]')
     df = pd.DataFrame(df.values[:, 1:5], columns=['country', 'confirmed', 'deaths', 'recovered'])
     df = df[~df['country'].isna()]
     df['country'] = df['country'].apply(lambda x: utils.clean_territory_name(x))
