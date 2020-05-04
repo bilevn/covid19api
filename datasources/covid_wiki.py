@@ -50,7 +50,7 @@ def get_report_us():
     :return: Pandas DataFrame
     """
     url = 'https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States'
-    df = utils.get_wiki_table_df(url, 'coronavirus pandemic in the United States by state and territory')
+    df = utils.get_wiki_table_df(url, 'COVID-19 pandemic in the United States by state and territory')
     df = pd.DataFrame(df.values[:, 1:5], columns=['state', 'confirmed', 'deaths', 'recovered'])
     df.drop(df[df['state'].str.len() > 40].index, inplace=True)
     df['state'] = df['state'].apply(lambda x: utils.clean_territory_name(x))
