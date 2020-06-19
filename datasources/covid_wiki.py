@@ -30,8 +30,8 @@ def get_report_countries():
 
     :return: Pandas DataFrame
     """
-    url = 'https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory'
-    df = utils.get_wiki_table_df(url, 'Locations[b]')
+    url = 'https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory'
+    df = utils.get_wiki_table_df(url, 'Location[b]')
     df = pd.DataFrame(df.values[:, 1:5], columns=['country', 'confirmed', 'deaths', 'recovered'])
     df = df[~df['country'].isna()]
     df['country'] = df['country'].apply(lambda x: utils.clean_territory_name(x))
@@ -49,7 +49,7 @@ def get_report_us():
 
     :return: Pandas DataFrame
     """
-    url = 'https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States'
+    url = 'https://en.wikipedia.org/wiki/Timeline_of_the_COVID-19_pandemic_in_the_United_States'
     df = utils.get_wiki_table_df(url, 'COVID-19 pandemic in the United States by state and territory')
     df = pd.DataFrame(df.values[:, 1:5], columns=['state', 'confirmed', 'deaths', 'recovered'])
     df.drop(df[df['state'].str.len() > 40].index, inplace=True)
@@ -67,8 +67,8 @@ def get_report_ru():
 
     :return: Pandas DataFrame
     """
-    url = 'https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Russia'
-    df = utils.get_wiki_table_df(url, 'coronavirus pandemic in Russia by federal subjects')
+    url = 'https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Russia'
+    df = utils.get_wiki_table_df(url, 'Per 1 million')
     df = pd.DataFrame(df.values[:, 1:5], columns=['state', 'confirmed', 'recovered', 'deaths'])
     df.drop(df[df['state'].str.len() > 40].index, inplace=True)
     df['state'] = df['state'].apply(lambda x: utils.clean_territory_name(x))
